@@ -7,14 +7,12 @@ import Footer from '../footer/footer';
 
 export default function App() {
 
-  let maxId = 1;
-
   const createItem = (description) => {
     return {
       description,
       done: false,
       date: new Date(),
-      id: maxId++,
+      id: +new Date() + Math.random(),
     };
   };
 
