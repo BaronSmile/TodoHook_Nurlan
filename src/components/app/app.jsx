@@ -14,9 +14,6 @@ export default function App() {
       description,
       done: false,
       date: new Date(),
-      time: 0,
-      timerID: null,
-      onTimer: false,
       id: maxId++,
     };
   };
@@ -54,17 +51,10 @@ export default function App() {
     return arr[idx][propName];
   };
 
-  const pauseTimer = (id) => {
-    const timerID = getItemProperty(todoData, id, 'timerID');
-    clearInterval(timerID);
-  };
-
-
   const deleteItem = (id) => {
-    pauseTimer(id);
-    setTodoData(() => {
-      const idx = findIdx(todoData, id);
-      return (getNewArr(todoData, idx)
+    setTodoData((data) => {
+      const idx = findIdx(data, id);
+      return (getNewArr(data, idx)
       );
     });
   };
